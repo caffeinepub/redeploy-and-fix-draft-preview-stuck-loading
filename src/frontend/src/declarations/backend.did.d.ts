@@ -10,41 +10,7 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
-export interface About {
-  'profileImage' : [] | [ExternalBlob],
-  'name' : string,
-  'summary' : string,
-}
-export interface ContactSubmission {
-  'name' : string,
-  'email' : string,
-  'message' : string,
-  'timestamp' : Time,
-}
-export interface Experience {
-  'id' : bigint,
-  'title' : string,
-  'period' : string,
-  'description' : string,
-  'company' : string,
-}
-export type ExternalBlob = Uint8Array;
-export interface Portfolio {
-  'about' : About,
-  'projects' : Array<Project>,
-  'socialLinks' : Array<SocialLink>,
-  'contactEmail' : string,
-  'experiences' : Array<Experience>,
-}
-export interface Project {
-  'id' : bigint,
-  'title' : string,
-  'description' : string,
-  'screenshots' : [] | [Array<ExternalBlob>],
-  'roleDetails' : string,
-}
-export interface SocialLink { 'url' : string, 'platform' : string }
-export type Time = bigint;
+export interface Img { 'png' : boolean, 'bytes' : Uint8Array }
 export interface _CaffeineStorageCreateCertificateResult {
   'method' : string,
   'blob_hash' : string,
@@ -72,14 +38,8 @@ export interface _SERVICE {
     _CaffeineStorageRefillResult
   >,
   '_caffeineStorageUpdateGatewayPrincipals' : ActorMethod<[], undefined>,
-  'addProject' : ActorMethod<
-    [string, string, string, [] | [Array<ExternalBlob>]],
-    Project
-  >,
-  'getContactSubmissions' : ActorMethod<[], Array<ContactSubmission>>,
-  'getPortfolioContent' : ActorMethod<[], Portfolio>,
-  'submitContactForm' : ActorMethod<[string, string, string], undefined>,
-  'uploadProfileImage' : ActorMethod<[ExternalBlob], undefined>,
+  'addImg' : ActorMethod<[Uint8Array], undefined>,
+  'getJpgs' : ActorMethod<[], Array<Img>>,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

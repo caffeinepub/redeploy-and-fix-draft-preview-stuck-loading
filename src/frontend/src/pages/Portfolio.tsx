@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import AboutSection from '@/components/AboutSection';
 import WorkExperienceSection from '@/components/WorkExperienceSection';
+import SkillsSection from '@/components/SkillsSection';
 import ProjectsSection from '@/components/ProjectsSection';
+import PortfolioLinksSection from '@/components/PortfolioLinksSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import { usePortfolioContent } from '@/hooks/useQueries';
@@ -15,7 +17,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'experience', 'projects', 'contact'];
+      const sections = ['about', 'experience', 'skills', 'projects', 'portfolio', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -81,9 +83,11 @@ export default function Portfolio() {
       <main>
         <AboutSection data={portfolio?.about} />
         <WorkExperienceSection data={portfolio?.experiences} />
+        <SkillsSection />
         <ProjectsSection data={portfolio?.projects} />
+        <PortfolioLinksSection links={portfolio?.portfolioLinks} />
         <ContactSection 
-          contactEmail={portfolio?.contactEmail} 
+          contactInfo={portfolio?.contact} 
           socialLinks={portfolio?.socialLinks} 
         />
       </main>

@@ -1,33 +1,31 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useActor } from './useActor';
-import type { Portfolio } from '@/backend';
+import { useQuery } from '@tanstack/react-query';
+import type { Portfolio } from '@/types/portfolio';
+import { portfolioData } from '@/data/portfolioData';
 
+// Since backend no longer supports portfolio functionality,
+// we return static data from local storage
 export function usePortfolioContent() {
-  const { actor, isFetching } = useActor();
-
   return useQuery<Portfolio>({
     queryKey: ['portfolioContent'],
     queryFn: async () => {
-      if (!actor) throw new Error('Actor not initialized');
-      return actor.getPortfolioContent();
+      // Minimal delay for smooth UX
+      await new Promise(resolve => setTimeout(resolve, 100));
+      return portfolioData;
     },
-    enabled: !!actor && !isFetching,
-    retry: 3,
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    staleTime: Infinity, // Static data never goes stale
   });
 }
 
+// Contact form submission is no longer supported by backend
+// This is a placeholder that simulates success
 export function useSubmitContactForm() {
-  const { actor } = useActor();
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: async (data: { name: string; email: string; message: string }) => {
-      if (!actor) throw new Error('Actor not initialized');
-      return actor.submitContactForm(data.name, data.email, data.message);
+  return {
+    mutateAsync: async (data: { name: string; email: string; message: string }) => {
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      console.log('Contact form submission (simulated):', data);
+      return Promise.resolve();
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['contactSubmissions'] });
-    },
-  });
+    isPending: false,
+  };
 }

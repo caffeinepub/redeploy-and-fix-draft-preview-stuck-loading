@@ -1,5 +1,5 @@
 import { Layers, ExternalLink } from 'lucide-react';
-import type { Project } from '@/backend';
+import type { Project } from '@/types/portfolio';
 
 interface ProjectsSectionProps {
   data?: Project[];
@@ -28,7 +28,6 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
           {data && data.length > 0 ? (
             data.map((project) => {
               const firstScreenshot = project.screenshots?.[0];
-              const screenshotUrl = firstScreenshot?.getDirectURL();
 
               return (
                 <div
@@ -37,9 +36,9 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
                 >
                   {/* Project Image */}
                   <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/10 to-chart-1/10">
-                    {screenshotUrl ? (
+                    {firstScreenshot ? (
                       <img
-                        src={screenshotUrl}
+                        src={firstScreenshot}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
@@ -79,7 +78,7 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
                             className="w-16 h-16 rounded-lg overflow-hidden border border-border"
                           >
                             <img
-                              src={screenshot.getDirectURL()}
+                              src={screenshot}
                               alt={`${project.title} screenshot ${idx + 2}`}
                               className="w-full h-full object-cover"
                             />

@@ -1,12 +1,13 @@
 import { User, Briefcase } from 'lucide-react';
-import type { About } from '@/backend';
+import { SiLinkedin } from 'react-icons/si';
+import type { About } from '@/types/portfolio';
 
 interface AboutSectionProps {
   data?: About;
 }
 
 export default function AboutSection({ data }: AboutSectionProps) {
-  const profileImageUrl = data?.profileImage?.getDirectURL();
+  const profileImageUrl = data?.profileImage;
 
   return (
     <section
@@ -41,6 +42,17 @@ export default function AboutSection({ data }: AboutSectionProps) {
                     <User className="w-32 h-32 text-primary/40" />
                   </div>
                 )}
+                
+                {/* LinkedIn Icon Overlay */}
+                <a
+                  href="https://www.linkedin.com/in/vikalpsingh10/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 right-4 w-14 h-14 rounded-full bg-primary hover:bg-primary/90 flex items-center justify-center transition-all hover:scale-110 shadow-lg"
+                  title="LinkedIn Profile"
+                >
+                  <SiLinkedin className="w-7 h-7 text-primary-foreground" />
+                </a>
               </div>
             </div>
           </div>
@@ -59,7 +71,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              {data?.summary || 'Game Designer specializing in immersive storytelling and interactive experiences. Passionate about creating engaging gameplay mechanics and memorable player experiences.'}
+              {data?.summary}
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">

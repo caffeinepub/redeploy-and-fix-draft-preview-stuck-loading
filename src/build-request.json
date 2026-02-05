@@ -1,69 +1,10 @@
 {
   "kind": "build_request",
-  "title": "Redeploy and fix draft preview stuck loading",
+  "title": "Untitled request",
   "priority": "normal",
-  "requirements": [
-    {
-      "id": "REQ-1",
-      "text": "Remove the nested React Query `QueryClientProvider` so the app uses a single shared `QueryClient` instance (keep the provider in `frontend/src/main.tsx` and update `frontend/src/App.tsx` accordingly).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "draft is keep loading for a long time"
-        ]
-      },
-      "acceptanceCriteria": [
-        "`frontend/src/App.tsx` no longer creates/exports its own `QueryClient` or wraps the app in an additional `QueryClientProvider`.",
-        "React Query hooks (`useActor`, `usePortfolioContent`, mutations, and `DataInitializer` invalidations) all use the same cache and behave consistently (no split-cache behavior)."
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Improve the portfolio loading UX so the UI does not appear to hang indefinitely: add an explicit error state for `usePortfolioContent` failures and show a retry action instead of only a spinner.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "draft is keep loading for a long time"
-        ]
-      },
-      "acceptanceCriteria": [
-        "If `getPortfolioContent()` fails, the Portfolio page shows an English error message and a visible retry control that triggers a refetch.",
-        "The loading spinner is only shown while the query is actively loading; users are not left on an indefinite spinner when an error occurs."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Redeploy the application after implementing the loading fix so the draft preview no longer gets stuck loading and the deployed version renders the portfolio sections successfully.",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "redepoly plzz"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A fresh build/deploy completes successfully.",
-        "Opening the preview loads the portfolio page and renders the About, Experience, Projects, and Contact sections without indefinite loading."
-      ]
-    }
-  ],
-  "constraints": [
-    "Do not edit any files under `frontend/src/components/ui`.",
-    "Do not edit immutable paths: `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, `frontend/src/components/ui`.",
-    "Backend must remain a single Motoko actor in `backend/main.mo` (no additional backend services)."
-  ],
-  "nonGoals": [
-    "Add new portfolio content, projects, or redesign the UI beyond what is needed to resolve the loading issue.",
-    "Change authentication behavior (Internet Identity) beyond what is needed to fix loading reliability."
-  ],
+  "requirements": [],
+  "constraints": [],
+  "nonGoals": [],
   "imageRequirements": {
     "required": [],
     "edits": []

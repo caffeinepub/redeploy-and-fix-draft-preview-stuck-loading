@@ -19,43 +19,9 @@ export const _CaffeineStorageRefillResult = IDL.Record({
   'success' : IDL.Opt(IDL.Bool),
   'topped_up_amount' : IDL.Opt(IDL.Nat),
 });
-export const ExternalBlob = IDL.Vec(IDL.Nat8);
-export const Project = IDL.Record({
-  'id' : IDL.Nat,
-  'title' : IDL.Text,
-  'description' : IDL.Text,
-  'screenshots' : IDL.Opt(IDL.Vec(ExternalBlob)),
-  'roleDetails' : IDL.Text,
-});
-export const Time = IDL.Int;
-export const ContactSubmission = IDL.Record({
-  'name' : IDL.Text,
-  'email' : IDL.Text,
-  'message' : IDL.Text,
-  'timestamp' : Time,
-});
-export const About = IDL.Record({
-  'profileImage' : IDL.Opt(ExternalBlob),
-  'name' : IDL.Text,
-  'summary' : IDL.Text,
-});
-export const SocialLink = IDL.Record({
-  'url' : IDL.Text,
-  'platform' : IDL.Text,
-});
-export const Experience = IDL.Record({
-  'id' : IDL.Nat,
-  'title' : IDL.Text,
-  'period' : IDL.Text,
-  'description' : IDL.Text,
-  'company' : IDL.Text,
-});
-export const Portfolio = IDL.Record({
-  'about' : About,
-  'projects' : IDL.Vec(Project),
-  'socialLinks' : IDL.Vec(SocialLink),
-  'contactEmail' : IDL.Text,
-  'experiences' : IDL.Vec(Experience),
+export const Img = IDL.Record({
+  'png' : IDL.Bool,
+  'bytes' : IDL.Vec(IDL.Nat8),
 });
 
 export const idlService = IDL.Service({
@@ -85,19 +51,8 @@ export const idlService = IDL.Service({
       [],
     ),
   '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
-  'addProject' : IDL.Func(
-      [IDL.Text, IDL.Text, IDL.Text, IDL.Opt(IDL.Vec(ExternalBlob))],
-      [Project],
-      [],
-    ),
-  'getContactSubmissions' : IDL.Func(
-      [],
-      [IDL.Vec(ContactSubmission)],
-      ['query'],
-    ),
-  'getPortfolioContent' : IDL.Func([], [Portfolio], ['query']),
-  'submitContactForm' : IDL.Func([IDL.Text, IDL.Text, IDL.Text], [], []),
-  'uploadProfileImage' : IDL.Func([ExternalBlob], [], []),
+  'addImg' : IDL.Func([IDL.Vec(IDL.Nat8)], [], []),
+  'getJpgs' : IDL.Func([], [IDL.Vec(Img)], ['query']),
 });
 
 export const idlInitArgs = [];
@@ -114,41 +69,7 @@ export const idlFactory = ({ IDL }) => {
     'success' : IDL.Opt(IDL.Bool),
     'topped_up_amount' : IDL.Opt(IDL.Nat),
   });
-  const ExternalBlob = IDL.Vec(IDL.Nat8);
-  const Project = IDL.Record({
-    'id' : IDL.Nat,
-    'title' : IDL.Text,
-    'description' : IDL.Text,
-    'screenshots' : IDL.Opt(IDL.Vec(ExternalBlob)),
-    'roleDetails' : IDL.Text,
-  });
-  const Time = IDL.Int;
-  const ContactSubmission = IDL.Record({
-    'name' : IDL.Text,
-    'email' : IDL.Text,
-    'message' : IDL.Text,
-    'timestamp' : Time,
-  });
-  const About = IDL.Record({
-    'profileImage' : IDL.Opt(ExternalBlob),
-    'name' : IDL.Text,
-    'summary' : IDL.Text,
-  });
-  const SocialLink = IDL.Record({ 'url' : IDL.Text, 'platform' : IDL.Text });
-  const Experience = IDL.Record({
-    'id' : IDL.Nat,
-    'title' : IDL.Text,
-    'period' : IDL.Text,
-    'description' : IDL.Text,
-    'company' : IDL.Text,
-  });
-  const Portfolio = IDL.Record({
-    'about' : About,
-    'projects' : IDL.Vec(Project),
-    'socialLinks' : IDL.Vec(SocialLink),
-    'contactEmail' : IDL.Text,
-    'experiences' : IDL.Vec(Experience),
-  });
+  const Img = IDL.Record({ 'png' : IDL.Bool, 'bytes' : IDL.Vec(IDL.Nat8) });
   
   return IDL.Service({
     '_caffeineStorageBlobIsLive' : IDL.Func(
@@ -177,19 +98,8 @@ export const idlFactory = ({ IDL }) => {
         [],
       ),
     '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
-    'addProject' : IDL.Func(
-        [IDL.Text, IDL.Text, IDL.Text, IDL.Opt(IDL.Vec(ExternalBlob))],
-        [Project],
-        [],
-      ),
-    'getContactSubmissions' : IDL.Func(
-        [],
-        [IDL.Vec(ContactSubmission)],
-        ['query'],
-      ),
-    'getPortfolioContent' : IDL.Func([], [Portfolio], ['query']),
-    'submitContactForm' : IDL.Func([IDL.Text, IDL.Text, IDL.Text], [], []),
-    'uploadProfileImage' : IDL.Func([ExternalBlob], [], []),
+    'addImg' : IDL.Func([IDL.Vec(IDL.Nat8)], [], []),
+    'getJpgs' : IDL.Func([], [IDL.Vec(Img)], ['query']),
   });
 };
 

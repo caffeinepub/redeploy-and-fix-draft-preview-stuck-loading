@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { Mail, Send, Loader2 } from 'lucide-react';
-import { SiLinkedin, SiX, SiGithub, SiInstagram } from 'react-icons/si';
+import { Mail, Send, Loader2, Phone, MapPin } from 'lucide-react';
+import { SiLinkedin } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useSubmitContactForm } from '@/hooks/useQueries';
 import { toast } from 'sonner';
-import type { SocialLink } from '@/backend';
+import type { SocialLink, ContactInfo } from '@/types/portfolio';
 
 interface ContactSectionProps {
-  contactEmail?: string;
+  contactInfo?: ContactInfo;
   socialLinks?: SocialLink[];
 }
 
-export default function ContactSection({ contactEmail, socialLinks }: ContactSectionProps) {
+export default function ContactSection({ contactInfo, socialLinks }: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,11 +43,14 @@ export default function ContactSection({ contactEmail, socialLinks }: ContactSec
   const getSocialIcon = (platform: string) => {
     const platformLower = platform.toLowerCase();
     if (platformLower.includes('linkedin')) return SiLinkedin;
-    if (platformLower.includes('twitter') || platformLower.includes('x')) return SiX;
-    if (platformLower.includes('github')) return SiGithub;
-    if (platformLower.includes('instagram')) return SiInstagram;
     return Mail;
   };
+
+  // Get LinkedIn URL from socialLinks or use fallback
+  const linkedInLink = socialLinks?.find(link => 
+    link.platform.toLowerCase().includes('linkedin')
+  );
+  const linkedInUrl = linkedInLink?.url || 'https://www.linkedin.com/in/vikalpsingh10/';
 
   return (
     <section id="contact" className="py-24 px-4 relative">
@@ -129,27 +132,78 @@ export default function ContactSection({ contactEmail, socialLinks }: ContactSec
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="bg-gradient-to-br from-primary/10 to-chart-1/10 border border-primary/20 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Contact Information</h3>
+              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               
-              {contactEmail && (
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-primary" />
+              <div className="space-y-6">
+                {contactInfo?.phone && (
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Phone</p>
+                      <a
+                        href={`tel:${contactInfo.phone}`}
+                        className="text-foreground hover:text-primary transition-colors font-medium"
+                      >
+                        {contactInfo.phone}
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {contactInfo?.email && (
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Email</p>
+                      <a
+                        href={`mailto:${contactInfo.email}`}
+                        className="text-foreground hover:text-primary transition-colors font-medium break-all"
+                      >
+                        {contactInfo.email}
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {contactInfo?.location && (
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Location</p>
+                      <p className="text-foreground font-medium">
+                        {contactInfo.location}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* LinkedIn Text Link */}
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <SiLinkedin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Email</p>
+                    <p className="text-sm text-muted-foreground">LinkedIn</p>
                     <a
-                      href={`mailto:${contactEmail}`}
-                      className="text-foreground hover:text-primary transition-colors font-medium"
+                      href={linkedInUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground hover:text-primary transition-colors font-medium break-all"
                     >
-                      {contactEmail}
+                      View Profile
                     </a>
                   </div>
                 </div>
-              )}
+              </div>
 
               {socialLinks && socialLinks.length > 0 && (
-                <div>
+                <div className="mt-8 pt-8 border-t border-primary/20">
                   <p className="text-sm text-muted-foreground mb-4">Follow me on</p>
                   <div className="flex flex-wrap gap-3">
                     {socialLinks.map((link, index) => {

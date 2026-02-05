@@ -40,31 +40,20 @@ After deployment, verify the following in the preview:
 
 - [ ] Portfolio page loads without indefinite loading spinner
 - [ ] **About section** renders with profile image and summary
-- [ ] **Experience section** displays all 4 work positions
-- [ ] **Projects section** shows all 5 personal projects
+- [ ] **Skills section** displays soft and hard skills
+- [ ] **Experience section** displays all work positions
+- [ ] **Projects section** shows all personal projects
+- [ ] **Portfolio section** displays portfolio links
 - [ ] **Contact section** displays form and social links
 - [ ] Navigation menu works and highlights active sections
 - [ ] Dark/light theme toggle functions correctly
 - [ ] Contact form submission works (check browser console for errors)
 
-### Troubleshooting
+### Custom Domain Setup (VikalpGameDesign.com)
 
-**Issue: Preview stuck on loading spinner**
-- Check browser console for errors
-- Verify backend canister is running: `dfx canister status backend`
-- Try a hard refresh (Ctrl+Shift+R or Cmd+Shift+R)
-- Redeploy both backend and frontend
+To connect your custom domain **VikalpGameDesign.com** to your deployed Internet Computer frontend canister:
 
-**Issue: "Actor not initialized" error**
-- Ensure backend bindings are generated: `dfx generate backend`
-- Check that `frontend/src/backend.d.ts` exists
-- Verify canister IDs in `frontend/env.json`
+#### Step 1: Get Your Canister Domain
 
-**Issue: Portfolio content not displaying**
-- Check that DataInitializer successfully seeded data
-- Open browser DevTools → Network tab → filter by "query"
-- Verify `getPortfolioContent` call returns data
+After deploying your frontend, note the canister URL from the deployment output. It will look like:
 
-### Development Mode
-
-For local development with hot reload:

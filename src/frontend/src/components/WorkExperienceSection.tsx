@@ -1,5 +1,5 @@
 import { Briefcase, Calendar } from 'lucide-react';
-import type { Experience } from '@/backend';
+import type { Experience } from '@/types/portfolio';
 
 interface WorkExperienceSectionProps {
   data?: Experience[];
@@ -11,16 +11,9 @@ export default function WorkExperienceSection({ data }: WorkExperienceSectionPro
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-            <Briefcase className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Career Journey</span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Work Experience
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Professional roles and achievements in the game design industry
-          </p>
         </div>
 
         {/* Timeline */}
@@ -29,7 +22,7 @@ export default function WorkExperienceSection({ data }: WorkExperienceSectionPro
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-chart-1 to-transparent" />
 
           <div className="space-y-12">
-            {data && data.length > 0 ? (
+            {data && data.length > 0 && (
               data.map((experience, index) => (
                 <div
                   key={experience.id.toString()}
@@ -67,10 +60,6 @@ export default function WorkExperienceSection({ data }: WorkExperienceSectionPro
                   <div className="hidden md:block flex-1" />
                 </div>
               ))
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">No work experience added yet.</p>
-              </div>
             )}
           </div>
         </div>
