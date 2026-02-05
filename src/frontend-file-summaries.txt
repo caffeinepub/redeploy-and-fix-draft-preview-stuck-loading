@@ -1,0 +1,15 @@
+{
+  "frontend/src/App.tsx": "Main application component that wraps the portfolio with ThemeProvider, DataInitializer for seeding resume data, and Toaster for notifications (no longer creates its own QueryClient).",
+  "frontend/src/pages/Portfolio.tsx": "Main portfolio page component that orchestrates all sections with smooth scrolling navigation, loading states, error handling with retry functionality, and uses the updated experiences field from the backend.",
+  "frontend/src/components/Header.tsx": "Fixed navigation header with smooth scroll functionality, mobile menu, and active section highlighting.",
+  "frontend/src/components/AboutSection.tsx": "Hero section displaying Vikalp Singh's profile image from generated assets, name, career summary, and call-to-action buttons with animated background.",
+  "frontend/src/components/WorkExperienceSection.tsx": "Timeline-based work experience section displaying the four specified positions with concise descriptions using the new Experience type with period field.",
+  "frontend/src/components/ProjectsSection.tsx": "Grid-based projects showcase with images, descriptions, and role details for each portfolio piece.",
+  "frontend/src/components/ContactSection.tsx": "Contact form with validation, social media links, and decorative elements for user engagement.",
+  "frontend/src/components/Footer.tsx": "Simple footer with copyright notice and caffeine.ai attribution with animated heart icon.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching portfolio content with retry logic and submitting contact form with proper state management and cache invalidation.",
+  "frontend/src/index.css": "Global styles with purple-themed OKLCH color system optimized for gaming aesthetic in both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended color palette and design tokens matching the gaming theme.",
+  "frontend/src/components/DataInitializer.tsx": "Component that seeds the backend with profile image and exactly 5 specified personal game design projects, checking for existing projects by exact title match to avoid duplicates and invalidating the portfolio query after additions.",
+  "frontend/DEPLOYMENT.md": "Deployment guide with build steps, verification checklist, and troubleshooting tips for ensuring the portfolio loads correctly without indefinite loading."
+}

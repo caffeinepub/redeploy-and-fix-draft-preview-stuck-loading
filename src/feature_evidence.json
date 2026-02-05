@@ -1,0 +1,63 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-remove-the-nested-react-query-queryclientprovider-so-the-app-uses-a-single-shared-queryclient-instance-keep-the-provider-in-frontend-src-main-tsx-and-update-frontend-src-app-tsx-accordingly",
+      "featureTitle": "Remove the nested React Query `QueryClientProvider` so the app uses a single shared `QueryClient` instance (keep the provider in `frontend/src/main.tsx` and update `frontend/src/App.tsx` accordingly).",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-improve-the-portfolio-loading-ux-so-the-ui-does-not-appear-to-hang-indefinitely-add-an-explicit-error-state-for-useportfoliocontent-failures-and-show-a-retry-action-instead-of-only-a-spinner",
+      "featureTitle": "Improve the portfolio loading UX so the UI does not appear to hang indefinitely: add an explicit error state for `usePortfolioContent` failures and show a retry action instead of only a spinner.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/Portfolio.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-redeploy-the-application-after-implementing-the-loading-fix-so-the-draft-preview-no-longer-gets-stuck-loading-and-the-deployed-version-renders-the-portfolio-sections-successfully",
+      "featureTitle": "Redeploy the application after implementing the loading fix so the draft preview no longer gets stuck loading and the deployed version renders the portfolio sections successfully.",
+      "files": [
+        "frontend/DEPLOYMENT.md"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

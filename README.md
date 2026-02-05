@@ -1,2 +1,3 @@
-# redeploy-and-fix-draft-preview-stuck-loading
-Exported from Caffeine project: Redeploy and fix draft preview stuck loading
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`
