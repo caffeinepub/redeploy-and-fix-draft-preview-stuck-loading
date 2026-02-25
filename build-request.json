@@ -1,0 +1,90 @@
+{
+  "kind": "build_request",
+  "title": "Add blog section to portfolio with external blog link",
+  "projectName": "Vikalp Game Design",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a new Blog section in the portfolio page that displays a list of blog posts with titles, descriptions, and external links",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "add a blog content inside the portfolio section"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Blog section appears in the portfolio page layout between existing sections",
+        "Section follows the same visual style and theming as other portfolio sections",
+        "Blog posts are displayed in a card grid similar to Projects section"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add the blog post 'Deep Analysis of Behavioral Patterns' with the link https://gamedesignmastery.blogspot.com/2026/02/deep-analysis-of-behavioral-patterns.html to the blog section",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "in blog add this link:https://gamedesignmastery.blogspot.com/2026/02/deep-analysis-of-behavioral-patterns.html"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Blog entry displays with title 'Deep Analysis of Behavioral Patterns'",
+        "Clicking the blog entry or a 'Read More' button opens the external link in a new tab",
+        "Link is correctly formatted and functional"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Update the navigation header to include a Blog menu item that scrolls to the new blog section",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Blog navigation item appears in the header menu",
+        "Clicking Blog scrolls smoothly to the blog section",
+        "Active state highlights correctly when blog section is in view"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add blog post data structure to the static portfolio data in frontend/src/data/portfolioData.ts with fields for title, description, date, and external URL",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Blog posts array is added to portfolio data structure",
+        "Type definitions in portfolio.ts include BlogPost interface",
+        "Initial blog post entry is populated with the provided external link"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify backend/main.mo - blog data is static frontend content",
+    "Do not edit immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui/*",
+    "Maintain consistency with existing section styling and layout patterns",
+    "Use React Query hooks pattern established in useQueries.ts for data fetching"
+  ],
+  "nonGoals": [
+    "Creating a backend API for blog post management",
+    "Implementing blog post creation or editing functionality",
+    "Adding comments or interaction features to blog posts",
+    "Embedding blog content directly - only external links are needed"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

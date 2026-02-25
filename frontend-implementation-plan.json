@@ -1,0 +1,81 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add blog section to portfolio with external blog link",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a new Blog section in the portfolio page that displays a list of blog posts with titles, descriptions, and external links",
+      "acceptanceCriteria": [
+        "Blog section appears in the portfolio page layout between existing sections",
+        "Section follows the same visual style and theming as other portfolio sections",
+        "Blog posts are displayed in a card grid similar to Projects section"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BlogSection.tsx",
+          "operation": "create",
+          "description": "Create a new BlogSection component that renders blog posts in a card grid layout. Display each blog post with title, description, date, and an external link button. Follow the same visual styling and layout patterns as ProjectsSection.tsx (card grid with hover effects). Include decorative icons and section heading consistent with other sections."
+        },
+        {
+          "path": "frontend/src/pages/Portfolio.tsx",
+          "operation": "modify",
+          "description": "Import and render the new BlogSection component between existing sections. Add 'blog' to the section-based scrolling state array to enable scroll detection for the blog section."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add the blog post 'Deep Analysis of Behavioral Patterns' with the link https://gamedesignmastery.blogspot.com/2026/02/deep-analysis-of-behavioral-patterns.html to the blog section",
+      "acceptanceCriteria": [
+        "Blog entry displays with title 'Deep Analysis of Behavioral Patterns'",
+        "Clicking the blog entry or a 'Read More' button opens the external link in a new tab",
+        "Link is correctly formatted and functional"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/data/portfolioData.ts",
+          "operation": "modify",
+          "description": "Add a blogPosts array to the portfolioData object containing the blog post entry with title 'Deep Analysis of Behavioral Patterns', a description, date, and externalUrl 'https://gamedesignmastery.blogspot.com/2026/02/deep-analysis-of-behavioral-patterns.html'. Follow the existing data structure patterns used for projects and experiences."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Update the navigation header to include a Blog menu item that scrolls to the new blog section",
+      "acceptanceCriteria": [
+        "Blog navigation item appears in the header menu",
+        "Clicking Blog scrolls smoothly to the blog section",
+        "Active state highlights correctly when blog section is in view"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add a 'Blog' navigation item to the navItems array in both desktop and mobile menu configurations. Ensure the item uses the same scroll-to-section behavior as existing navigation items and highlights correctly when the blog section is in view."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add blog post data structure to the static portfolio data in frontend/src/data/portfolioData.ts with fields for title, description, date, and external URL",
+      "acceptanceCriteria": [
+        "Blog posts array is added to portfolio data structure",
+        "Type definitions in portfolio.ts include BlogPost interface",
+        "Initial blog post entry is populated with the provided external link"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/types/portfolio.ts",
+          "operation": "modify",
+          "description": "Add a BlogPost interface with fields for id, title, description, date, and externalUrl. Update the PortfolioData interface to include an optional blogPosts array of BlogPost objects."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a useGetBlogPosts hook that returns the blogPosts array from portfolioData. Follow the same pattern as useGetProjects and useGetExperiences with a small delay for consistency."
+        }
+      ]
+    }
+  ]
+}

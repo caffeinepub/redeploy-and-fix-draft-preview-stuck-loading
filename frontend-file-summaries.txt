@@ -1,0 +1,21 @@
+{
+  "frontend/src/App.tsx": "Main application component that wraps the portfolio with ThemeProvider, DataInitializer for seeding resume data, and Toaster for notifications (no longer creates its own QueryClient).",
+  "frontend/src/pages/Portfolio.tsx": "Main portfolio page component that orchestrates all sections including the new BlogSection, with scroll tracking updated to include the \"blog\" section.",
+  "frontend/src/components/Header.tsx": "Fixed navigation header with smooth scroll functionality, mobile menu, active section highlighting, and updated navigation items to include Blog between Portfolio and Contact.",
+  "frontend/src/components/AboutSection.tsx": "Hero section displaying profile image with LinkedIn icon overlay button in bottom-right corner, name, and career summary with animated background and call-to-action buttons.",
+  "frontend/src/components/WorkExperienceSection.tsx": "Timeline-based work experience section displaying positions with descriptions, now with simplified header showing only the section title without extra subheading or introductory paragraph.",
+  "frontend/src/components/ProjectsSection.tsx": "Grid-based projects showcase with images, descriptions, and role details, now using local Portfolio types and string URLs instead of ExternalBlob.",
+  "frontend/src/components/ContactSection.tsx": "Contact form with validation and contact information display including a dedicated LinkedIn text link entry with icon; the \"Follow me on\" icon section is conditionally rendered only when socialLinks array has items, and unused icon imports have been removed.",
+  "frontend/src/components/Footer.tsx": "Simple footer with copyright notice and caffeine.ai attribution with animated heart icon.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks that return static portfolio data including the new useGetBlogPosts hook for fetching blog posts with optimized loading delays.",
+  "frontend/src/index.css": "Global styles with purple-themed OKLCH color system optimized for gaming aesthetic in both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended color palette and design tokens matching the gaming theme.",
+  "frontend/src/components/DataInitializer.tsx": "Empty component since backend no longer supports portfolio data initialization; all data is now static.",
+  "frontend/DEPLOYMENT.md": "Comprehensive deployment guide with build/deploy steps, verification checklist, detailed custom domain setup instructions for VikalpGameDesign.com including DNS configuration and HTTPS verification, plus troubleshooting for common deployment and domain issues.",
+  "frontend/src/components/SkillsSection.tsx": "New section component displaying two grouped skill lists (Soft Skills and Hard Skills) with the exact items specified, styled consistently with existing sections using cards, borders, and hover effects.",
+  "frontend/src/types/portfolio.ts": "Local TypeScript type definitions for portfolio data structures including About, Experience, Project, ContactInfo, SocialLink, PortfolioLink, BlogPost, and Portfolio root interface with optional blogPosts field.",
+  "frontend/src/data/portfolioData.ts": "Static portfolio data containing all content including the new blogPosts array with the \"Deep Analysis of Behavioral Patterns\" article entry.",
+  "frontend/src/components/PortfolioLinksSection.tsx": "New section component displaying portfolio links in a card grid layout with external link icons, hover effects, and safe new-tab navigation (rel=\"noreferrer noopener\").",
+  "frontend/index.html": "HTML entry point with updated title \"Vikalp Singh - Game Designer Portfolio\" and canonical link pointing to https://vikalpgamedesign.com/ for SEO.",
+  "frontend/src/components/BlogSection.tsx": "New section component displaying blog posts in a card grid layout with titles, descriptions, dates, and external link buttons styled consistently with other portfolio sections."
+}

@@ -1,0 +1,83 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-new-blog-section-in-the-portfolio-page-that-displays-a-list-of-blog-posts-with-titles-descriptions-and-external-links",
+      "featureTitle": "Create a new Blog section in the portfolio page that displays a list of blog posts with titles, descriptions, and external links",
+      "files": [
+        "frontend/src/components/BlogSection.tsx",
+        "frontend/src/pages/Portfolio.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-the-blog-post-deep-analysis-of-behavioral-patterns-with-the-link-https-gamedesignmastery-blogspot-com-2026-02-deep-analysis-of-behavioral-patterns-html-to-the-blog-section",
+      "featureTitle": "Add the blog post 'Deep Analysis of Behavioral Patterns' with the link https://gamedesignmastery.blogspot.com/2026/02/deep-analysis-of-behavioral-patterns.html to the blog section",
+      "files": [
+        "frontend/src/data/portfolioData.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-navigation-header-to-include-a-blog-menu-item-that-scrolls-to-the-new-blog-section",
+      "featureTitle": "Update the navigation header to include a Blog menu item that scrolls to the new blog section",
+      "files": [
+        "frontend/src/components/Header.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-blog-post-data-structure-to-the-static-portfolio-data-in-frontend-src-data-portfoliodata-ts-with-fields-for-title-description-date-and-external-url",
+      "featureTitle": "Add blog post data structure to the static portfolio data in frontend/src/data/portfolioData.ts with fields for title, description, date, and external URL",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/types/portfolio.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
